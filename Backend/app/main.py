@@ -1,9 +1,22 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, Form
 from Backend.app.models import RecommendSkillsRequest, RecommendSkillsResponse, AddUserRequest, AddUserResponse
 from Backend.app.recommendation import recommend_skills, add_new_user
 from Backend.app.utils import load_dataframe_from_pickle
+from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
+import pickle
+import pandas as pd
+from sklearn.metrics.pairwise import cosine_similarity
 
+# Initialize FastAPI app
 app = FastAPI()
+
+# Serve static files (CSS, JS)
+app.mount("/Frontend", StaticFiles(directory="Frontend"), name="Frontend")
+
+@app.get("/")
+async def serve_index():
+    return FileResponse('Frontend/index.html')
 
 # Load skills and similarity scores at startup
 data = load_dataframe_from_pickle('current_skills.pkl')

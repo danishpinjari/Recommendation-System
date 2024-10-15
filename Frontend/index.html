@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Recommendation System</title>
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="/Frontend/style.css">
+</head>
+<body>
+    <header>
+        <h1>Skill Recommendation System</h1>
+    </header>
+
+    <section id="user-skill-section">
+        <h2>Check Recommended Skills</h2>
+        <form id="recommendation-form">
+            <label for="user-id">Enter User ID:</label>
+            <input type="text" id="user-id" name="user-id" placeholder="e.g., U104" required>
+            <label for="similarity-threshold">Similarity Threshold (%):</label>
+            <input type="number" id="similarity-threshold" name="similarity-threshold" placeholder="e.g., 20" required min="1" max="100">
+            <button type="submit">Get Recommended Skills</button>
+        </form>
+        <div id="recommendation-results">
+            <h3>Recommended Skills:</h3>
+            <ul id="skills-list"></ul>
+        </div>
+    </section>
+
+    <section id="new-user-section">
+        <h2>Add New User</h2>
+        <form id="new-user-form">
+            <label for="new-user-id">New User ID:</label>
+            <input type="text" id="new-user-id" name="new-user-id" placeholder="e.g., U1001" required>
+            <label for="new-user-skills">Enter Current Skills (comma-separated):</label>
+            <input type="text" id="new-user-skills" name="new-user-skills" placeholder="e.g., Python, Data Visualization" required>
+            <label for="new-user-threshold">Similarity Threshold (%):</label>
+            <input type="number" id="new-user-threshold" name="new-user-threshold" placeholder="e.g., 90" required min="1" max="100">
+            <button type="submit">Add User & Get Recommendations</button>
+        </form>
+        <div id="new-user-results">
+            <h3>Recommended Skills for New User:</h3>
+            <ul id="new-skills-list"></ul>
+        </div>
+    </section>
+
+    <!-- Link to external JS -->
+    <script src="/Frontend/script.js"></script>
+</body>
+</html>
